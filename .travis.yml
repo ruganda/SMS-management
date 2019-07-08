@@ -3,7 +3,9 @@ node_js: "node"
 cache:
   directories:
   - node_modules
-services: postgresql
+  - postgresql
+before_script:
+  - psql -c 'create database SMS_API_TEST;' -U postgres
 script:
   - npm test
 after_success:
