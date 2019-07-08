@@ -14,6 +14,12 @@ module.exports = {
       body: {
         type: Sequelize.STRING
       },
+      status: {
+        type: Sequelize.STRING
+      },
+      sender:{
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -21,6 +27,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+     
+      reciever:{
+        type: Sequelize.STRING
       }
     });
   },
