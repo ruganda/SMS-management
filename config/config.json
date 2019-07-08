@@ -16,10 +16,10 @@
     "operatorsAliases": false
   },
   "production": {
-    "username": process.env.USER,
-    "password": process.env.PASSWORD,
-    "database": process.env.DATABASE,
-    "host": process.env.HOST,
+    "username": "gajetrscelbsrb",
+    "password": "c071d531ee9cf8d7cb697eedc10fcc693f40958ec1a02689f1a66f3b9e8fd189",
+    "database": "dcp8qnq20stkb3",
+    "host": "ec2-107-21-126-201.compute-1.amazonaws.com",
     "dialect": "postgres",
     "operatorsAliases": false
   }
