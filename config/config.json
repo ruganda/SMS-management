@@ -10,7 +10,7 @@
   "test": {
     "username": "postgres",
     "password": "",
-    "database": "SMS_API_TEST",
+    "database": "test_db",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": false

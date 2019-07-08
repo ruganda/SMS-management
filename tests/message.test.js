@@ -19,7 +19,7 @@ const getAllUsers = ()=>{
   return res
 }
 
-const createMessage =()=>{
+const createMessage =(message)=>{
   const res = ( async ()=> await request(app).post('/message').send(message)
     )();
   return res
