@@ -13,7 +13,6 @@ class MessageController {
     
     console.log(sender);
 
-    // Message.sync({ force: true })
     const message ={
         title,
         body,
