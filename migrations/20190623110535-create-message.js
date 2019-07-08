@@ -17,9 +17,6 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
-      sender:{
-        type: Sequelize.STRING
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -28,9 +25,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-     
+      sender:{
+        type: Sequelize.INTEGER
+      },
       reciever:{
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       }
     });
   },

@@ -11,8 +11,6 @@ class MessageController {
     const {title, body, reciever} = req.body;
     const sender = getTokenData(req).id;
     
-    console.log(sender);
-
     const message ={
         title,
         body,
