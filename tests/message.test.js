@@ -3,8 +3,6 @@ import request from 'supertest';
 import models from "../models"
 const expect = require('chai').expect;
 
-// models.User.sync({ force: true })
-models.Message.sync({force: true})
 
 let accessToken;
 const getUserToken = (userData) => {
@@ -32,7 +30,6 @@ const testUser ={
 
 
 describe('Test message routes',  ()=>{
-    models.Message.sync({force: true})
     let token;
     let users;
     

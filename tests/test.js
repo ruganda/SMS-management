@@ -3,11 +3,9 @@ import request from 'supertest';
 import models from "../models/index";
 const expect = require('chai').expect;
 
-// models.User.sync({ force: true })
-// models.Message.sync({force:true})
 
 describe('Test user routes', ()=>{
-  models.User.sync({ force: false })
+
   it('should add a contact', (done)=>{
     request(app).post('/user')
     .send({
