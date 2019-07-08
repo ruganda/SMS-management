@@ -9,6 +9,7 @@ const message = new MessageController();
 const router = express.Router();
 
 router.post("/user", user.createUser)
+router.get("/user", user.viewAllContacts)
 router.delete("/user/:contact",  user.deleteContact)
 router.post("/message", verifyToken,validateContact,  message.createMessage)
 router.get("/recieved", verifyToken, message.viewAllRecieved)
