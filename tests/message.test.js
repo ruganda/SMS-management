@@ -1,44 +1,64 @@
 import app from '../server.js';
 import request from 'supertest';
+import models from "../models"
 const expect = require('chai').expect;
 
-process.NODE_ENV ="test"
+// models.User.sync({ force: true })
+models.Message.sync({force: true})
+
 let accessToken;
 const getUserToken = (userData) => {
-   
     const res = ( async ()=> await request(app).post('/user').send(userData)
     )();
-    console.log (res)
     return res
+}
 
+const getAllUsers = ()=>{
+  const res = ( async ()=> await request(app).get('/user').send()
+    )();
+  return res
+}
+
+const createMessage =()=>{
+  const res = ( async ()=> await request(app).post('/message').send(message)
+    )();
+  return res
 }
 
 const testUser ={
-    name:"Mubarak",
-    phoneNumber:"0779850746"
+    name:"Mubarak2",
+    phoneNumber:"0779545785"
 }
 
+
 describe('Test message routes',  ()=>{
-  
-    let token
-  
+    models.Message.sync({force: true})
+    let token;
+    let users;
+    
+
     beforeEach(async()=>{
         token = await getUserToken(testUser);
+        users = await getAllUsers()
+        const testMessage  = {
+          "title": "My first test message",
+          "body":"This is what I wanted to tell you",
+          reciever: users.body.contacts[0].id
+          }
+        createMessage(testMessage)
     })
 
   it('should  send a message',  (done)=>{
-    // request(app).headers['authorization']= `Bearer ${getUserToken(testUser)}`
-  
     const message ={
     "title": "My first test message",
     "body":"This is what I wanted to tell you",
-    "reciever": 1
+    reciever: users.body.contacts[0].id
     }
-    console.log(  getUserToken(testUser), 'tttttttyyyyyyyyyy')
     request(app).post('/message')
     .send(message)
     .set('Authorization', `Bearer ${token.body.token}`)
    .end((err, res)=>{
+     
     expect(res.status).to.equal(201)
     expect(res.body.message.title).to.equal("My first test message")
     done();
