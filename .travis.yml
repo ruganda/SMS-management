@@ -11,5 +11,4 @@ script:
   - npm install
   - npm run migrate
   - npm test
-after_success:
-  - COVERALLS_REPO_TOKEN=$repo_token npm run coveralls
+
