@@ -11,6 +11,10 @@ const app = express();
 app.use(bodyParser);
 app.use(Routes);
 
+app.get('/', (req, res)=>{
+  res.send("welcome to the sms management system")
+})
+
 app.listen(port, function(err){
   if(err){
     console.log(err)

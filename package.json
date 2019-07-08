@@ -6,9 +6,10 @@
   "scripts": {
     "connect-db": "babel-node ./config/db.js ",
     "test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha ./tests ---require @babel/register  --exit --timeout 1000000",
+    "prestart": "eval $(cat .env) npx sequelize-cli db:migrate",
     "start": " eval $(cat .env) babel-node server.js",
     "dev": " eval $(cat .env) nodemon --exec babel-node server.js",
-    "migrate": "npx sequelize-cli db:migrate",
+    "migrate": " eval $(cat .env) npx sequelize-cli db:migrate",
     "undo-migrate": "npx sequelize-cli db:migrate:undo:all",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls "
   },
