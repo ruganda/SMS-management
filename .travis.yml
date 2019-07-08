@@ -11,4 +11,5 @@ script:
   - npm install
   - npm run migrate
   - npm test
-
+after_success:
+  - npm run coveralls
