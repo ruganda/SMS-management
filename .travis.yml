@@ -1,0 +1,14 @@
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database SMS_API_TEST;' -U postgres
+script:
+  - npm install
+  - npm test
+after_success:
+  - COVERALLS_REPO_TOKEN=$repo_token npm run coveralls
