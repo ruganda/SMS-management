@@ -8,9 +8,9 @@
     "operatorsAliases": false
   },
   "test": {
-    "username": "root",
+    "username": "postgres",
     "password": null,
-    "database": "database_test",
+    "database": "SMS_API_TEST",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": false
