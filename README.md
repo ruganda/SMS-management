@@ -27,7 +27,7 @@ Contact:
 **Application demo**
 
 * To interact with the application via postman
-     * https://rugandasmsAPIherokuapp.com/
+     * https://ruganda-sms.herokuapp.com/
 
     then use the following endpoints to perform the specified tasks
     
