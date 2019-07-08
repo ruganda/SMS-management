@@ -7,19 +7,11 @@ class UserController {
    createUser(req, res) {
     const {name, phoneNumber} = req.body;
 
-    // User.sync({ force: true }).then(() => {
-    //   // Now the `users` table in the database corresponds to the model definition
-    //   return User.create({
-    //     name, phoneNumber
-    //   });
-    // });
-
     User.findOrCreate({
       where: { name},
       defaults: { phoneNumber }
     })
       .then(([user, created]) => {
-        console.log(chalk.blue('logged', process.env.SECRET_KEY))
         jwt.sign({user}, 'secret', (err, token)=>{
           if(err) {
             res.send({err})
@@ -43,6 +35,13 @@ class UserController {
     }})
     .then((result)=> {console.log(result, 'deleted'); res.send({message: "Contact deleted"})})
     .catch(err=> res.status(500).send({err}))
+  }
+
+  viewAllContacts(req, res){
+    User.findAll().then(contacts=>{
+      res.status(200).send({contacts})
+    })
+    .catch(err => res.status(500).send({err}))
   }
 
 }
