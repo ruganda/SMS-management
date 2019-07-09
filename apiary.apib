@@ -1,0 +1,156 @@
+FORMAT: 1A
+HOST: https://ruganda-sms.herokuapp.com/
+
+# sms management
+
+Sms-management is an api for managing SMS.
+
+## User collection [/questions]
+
+### List All Users [GET]
+You can retrieve a list of all available contacts so that you can choose a contact of 
+your choice
+
++ Response 200 (application/json)
+
+        {
+            "contacts": [
+                {
+                    "id": 1,
+                    "name": "Muba",
+                    "phoneNumber": "0779850732",
+                    "createdAt": "2019-07-07T03:51:06.168Z",
+                    "updatedAt": "2019-07-07T03:51:06.168Z"
+                },
+                {
+                    "id": 12,
+                    "name": "Test user",
+                    "phoneNumber": "0779850746",
+                    "createdAt": "2019-07-08T12:18:11.192Z",
+                    "updatedAt": "2019-07-08T12:18:11.192Z"
+                }
+            ]
+        }
+
+### Create a New Contact [POST]
+
+You may create a new contact
+
++ Request (application/json)
+
+         {
+    
+            "name": "Ruganda",
+            "phoneNumber": "0779850746"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Authorization: "Bearer token"
+
+    + Body
+
+            {
+            "user": {
+                "id": 2,
+                "phoneNumber": "0779850746",
+                "name": "Ruganda",
+                "updatedAt": "2019-07-08T23:48:30.618Z",
+                "createdAt": "2019-07-08T23:48:30.618Z"
+            },
+            "created": true,
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyLCJwaG9uZU51bWJlciI6IjA3Nzk4NTA3NDYiLCJuYW1lIjoiUnVnYW5kYSIsInVwZGF0ZWRBdCI6IjIwMTktMDctMDhUMjM6NDg6MzAuNjE4WiIsImNyZWF0ZWRBdCI6IjIwMTktMDctMDhUMjM6NDg6MzAuNjE4WiJ9LCJpYXQiOjE1NjI2Mjk3MTB9.YTaAtI5UKAqm1PIWsnZ8JS-SReqiWnFbj_1jplIPzG0"
+            }
+            
+
+
+## Delete User [/user/0779850746]
+
+### Retrive all recieved messages [DELETE]
++ Response 200 (application/json)
+
+        {
+            "message": "Contact deleted"
+        }
+            
+## Messages [/message]
+
+### send a message [POST]
++ Request (application/json)
+
+            {
+    
+            "title": "My first message",
+            "body":"This is what I wanted to tell you",
+            "reciever": 2
+          }
+            
++ Response 200 (application/json)
+
+           {
+            "messages": [
+                {
+                    "id": 1,
+                    "title": "My first message",
+                    "body": "This is what I wanted to tell you",
+                    "status": "unRead",
+                    "createdAt": "2019-07-09T03:34:53.853Z",
+                    "updatedAt": "2019-07-09T03:34:53.853Z",
+                    "sender": 2,
+                    "reciever": 2
+                },
+                {
+                    "id": 2,
+                    "title": "My first message",
+                    "body": "This is what I wanted to tell you",
+                    "status": "unRead",
+                    "createdAt": "2019-07-09T03:36:07.121Z",
+                    "updatedAt": "2019-07-09T03:36:07.121Z",
+                    "sender": 2,
+                    "reciever": 1
+                }
+            ]
+        }
+            
+## Recieved Messages [/recieved]
+
+### Retrive all recieved messages [GET]
++ Response 200 (application/json)
+
+        {
+            "messages": [
+                {
+                    "id": 1,
+                    "title": "My first message",
+                    "body": "This is what I wanted to tell you",
+                    "status": "unRead",
+                    "createdAt": "2019-07-09T03:34:53.853Z",
+                    "updatedAt": "2019-07-09T03:34:53.853Z",
+                    "sender": 2,
+                    "reciever": 2
+                }
+            ]
+        }
+            
+            
+## Recieved Messages [/sent]
+
+### Retrive all recieved messages [GET]
++ Response 200 (application/json)
+
+        {
+            "messages": [
+                {
+                    "id": 1,
+                    "title": "My first message",
+                    "body": "This is what I wanted to tell you",
+                    "status": "unRead",
+                    "createdAt": "2019-07-09T03:34:53.853Z",
+                    "updatedAt": "2019-07-09T03:34:53.853Z",
+                    "sender": 2,
+                    "reciever": 2
+                }
+            ]
+        }
